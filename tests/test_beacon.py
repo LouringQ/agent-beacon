@@ -35,6 +35,10 @@ def clean_env(**overrides):
         "BEACON_DND_DB_DIR": os.path.join(tmp_home, "no-such-dnd-dir"),
         "BEACON_APPROVE_WAIT": "0",
         "PYTHONIOENCODING": "utf-8",
+        # 任何意外触发的出网请求(比如 terminal-forced 分支会真的发一条 Pushcut 提醒)
+        # 必须瞬时失败、不依赖真实外网可达性 —— 指向一个必然拒连的本地端口,而不是让
+        # urllib 真的去连 api.pushcut.io(不同 CI 系统的网络环境不一样,会导致测试不稳定)。
+        "HTTPS_PROXY": "http://127.0.0.1:1",
     }
     env.update({k: v for k, v in overrides.items() if v is not None})
     for k, v in list(env.items()):
@@ -333,6 +337,7 @@ class TestDashboard(unittest.TestCase):
             self.assertIn("auto_cli", payload)
         finally:
             server.shutdown()
+            server.server_close()
 
 
 if __name__ == "__main__":
