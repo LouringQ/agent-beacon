@@ -1,0 +1,21 @@
+# Never commit real secrets / local config
+beacon.env
+*.env
+!beacon.env.example
+secrets.*
+
+# 本地状态:审批日志(可能含命令片段/文件路径,不该进公开仓库)、旗标文件
+*.db
+*.flag
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

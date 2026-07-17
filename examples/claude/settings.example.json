@@ -1,0 +1,35 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 /ABSOLUTE/PATH/TO/agent-beacon/beacon_approve.py"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 /ABSOLUTE/PATH/TO/agent-beacon/beacon_done.py"
+          }
+        ]
+      }
+    ],
+    "StopFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 /ABSOLUTE/PATH/TO/agent-beacon/beacon_done.py"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "hooks": {
+    "PermissionRequest": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 /ABSOLUTE/PATH/TO/agent-beacon/beacon_approve.py --agent codex"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 /ABSOLUTE/PATH/TO/agent-beacon/beacon_done.py --agent codex"
+          }
+        ]
+      }
+    ]
+  }
+}
